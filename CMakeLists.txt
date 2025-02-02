@@ -49,18 +49,20 @@ list(REMOVE_ITEM SOURCES ${WINDOW_RESOURCES} ${LINUX_RESOURCES} ${TEST_FILES})
 set(UNIT_TEST_SOURCES ${SOURCES})
 list(REMOVE_ITEM UNIT_TEST_SOURCES ${NON_UNIT_TEST_FILES})
 
-add_subdirectory(vendors)
 set(GRAPHICS_API_LIBRARIES)
 
 if (USE_OPENGL)
     message(STATUS "Using OpenGL as the rendering API")
     add_definitions(-DUSE_OPENGL)
 
-    list(APPEND GRAPHICS_API_LIBRARIES glfw)
+    list(APPEND GRAPHICS_API_LIBRARIES glfw libglew_static)
     set(GLFW_LIBRARY_TYPE STATIC)
     set(GLFW_BUILD_EXAMPLES OFF)
     set(GLFW_BUILD_TESTS OFF)
     set(GLFW_BUILD_DOCS OFF)
+
+    set(glew-CMAKE_BUILD_SHARED FALSE)
+    set(ONLY_LIBS ON)
 else()
     message(FATAL_ERROR "Only OpenGL is supported at the moment")
 endif()
@@ -76,8 +78,7 @@ elseif (UNIX)
     set(RESOURCE_FILES)
 endif()
 
-message(STATUS "Graphics API libraries: ${GRAPHICS_API_LIBRARIES}")
-
+add_subdirectory(vendors)
 
 add_executable(
     ${PROJECT_NAME}

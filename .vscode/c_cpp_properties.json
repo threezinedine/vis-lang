@@ -4,7 +4,8 @@
 			"name": "Win32",
 			"includePath": [
 				"${workspaceFolder}/**",
-				"${workspaceFolder}/vendors/stb_image/*"
+				"${workspaceFolder}/vendors/stb_image/*",
+				"${workspaceFolder}/vendors/glew/include/*"
 			],
 			"defines": ["_DEBUG", "UNICODE", "_UNICODE", "USE_OPENGL"],
 			"windowsSdkVersion": "10.0.22621.0",

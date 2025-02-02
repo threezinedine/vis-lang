@@ -6,6 +6,7 @@
 #include <cstdlib>
 
 #ifdef USE_OPENGL
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <stb_image.h>
 
@@ -56,6 +57,13 @@ namespace ntt
         }
 
         glfwMakeContextCurrent(s_window);
+
+        if (auto err = glewInit(); err != GLEW_OK)
+        {
+            // TODO: Modify it when the logging system is implemented.
+            Print((const char *)glewGetErrorString(err), DefaultColor::RED);
+            std::exit(NTT_ERROR_FAILED_TO_INIT_WINDOW);
+        }
     }
 
     b8 WindowShouldClose()
