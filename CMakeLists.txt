@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(VizLang)
 
+enable_testing()
+
 # options definitions
 option(USE_OPENGL "Use OpenGL as the rendering API" ON) # currently only OpenGL is supported
 
@@ -133,4 +135,10 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E copy_directory 
     ${CMAKE_SOURCE_DIR}/assets 
     ${CMAKE_BINARY_DIR}/assets
+)
+
+# Add test
+add_test(
+    NAME ${TEST_PROJECT_NAME}
+    COMMAND ${TEST_PROJECT_NAME}
 )
