@@ -100,7 +100,3 @@ html/index.html
 ## Contact
 
 If you have any questions or suggestions, feel free to contact me at [threezinedine@gmail.com](mailto:threezinedine@gmail.com).
-
-```
-
-```
