@@ -93,6 +93,7 @@ target_link_libraries(
     PRIVATE
     ${GRAPHICS_API_LIBRARIES}
     STBImage
+    ImGui
 )
 
 target_include_directories(

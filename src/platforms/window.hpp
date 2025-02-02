@@ -32,6 +32,18 @@ namespace ntt
     void PollEvents();
 
     /**
+     * The beginning setup for drawing section of the graphics API. This should must be called
+     *      after the PollEvents function (can have some logic between them).
+     */
+    void StartFrame();
+
+    /**
+     * The ending setup for drawing section of the graphics API. This should must be called
+     *      after the StartFrame function (can have some logic between them).
+     */
+    void EndFrame();
+
+    /**
      * Deletes all the windows and frees the resources which were used by the
      *      application.
      *
