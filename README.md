@@ -68,7 +68,7 @@ cd build
 -   For Windows:
 
 ```cmd
-cmake -G "MinGW Makefiles" -S .. -B . -DCMAKE_BUILD_TYPE=Release
+cmake -G "MinGW Makefiles" -S .. -B . -DCMAKE_BUILD_TYPE=Release -DUSE_OPENGL=ON
 
 mingw32-make
 ```
@@ -79,6 +79,8 @@ mingw32-make
 cmake -G "Unix Makefiles" -S .. -B . -DCMAKE_BUILD_TYPE=Release
 make
 ```
+
+`Remark`: The application currently only supports OpenGL for rendering. You can ignore the `USE_OPENGL` flag for now (the `OpenGL` is used by default).
 
 5. The compiled executable will be located in the `build` directory with the name `VisLang`.
 6. (Optional) for Linux, you can install the executable by running the following command:

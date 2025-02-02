@@ -15,6 +15,18 @@
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb"
+		},
+		{
+			"name": "Application Debug",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/build/VizLang.exe",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}/build/",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb"
 		}
 	]
 }
