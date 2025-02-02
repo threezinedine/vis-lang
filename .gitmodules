@@ -4,10 +4,10 @@
 [submodule "vendors/glfw"]
 	path = vendors/glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "vendors/glew"]
-	path = vendors/glew
-	url = https://github.com/Perlmint/glew-cmake.git
 [submodule "vendors/imgui"]
 	path = vendors/imgui
 	url = git@github.com:threezinedine/imgui.git
 	branch = docking
+[submodule "vendors/glew"]
+	path = vendors/glew
+	url = git@github.com:threezinedine/glew-cmake.git
