@@ -1,16 +1,21 @@
-#include <cstdio>
+#include <platforms/platforms.hpp>
 
-#ifdef DEBUG
-#define DEBUG_PRINT(...) printf(__VA_ARGS__)
-#else
-#define DEBUG_PRINT(...)
-#endif
+using namespace ntt;
 
 int main(void)
 {
-    printf("Hello, World!\n");
-
-    DEBUG_PRINT("Debugging...\n");
+    Print("Hello, World!", DefaultColor::GREEN);
+    Print("Hello, World!", DefaultColor::RED);
+    Print("Hello, World!", DefaultColor::BLUE);
+    Print("Hello, World!", DefaultColor::ORANGE);
+    Print("Hello, World!", DefaultColor::PURPLE);
+    Print("Hello, World!", DefaultColor::PINK);
+    Print("Hello, World!", DefaultColor::BROWN);
+    Print("Hello, World!", DefaultColor::GREY);
+    Print("Hello, World!", DefaultColor::CYAN);
+    Print("Hello, World!", DefaultColor::MAGENTA);
+    Print("Hello, World!", DefaultColor::LIME);
+    Print("Hello, World!", DefaultColor::TEAL);
 
     return 0;
 }

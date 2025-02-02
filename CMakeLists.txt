@@ -5,7 +5,10 @@ project(VizLang)
 add_subdirectory(vendors)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_definitions(-DDEBUG)
+    add_compile_options(-g)
+    add_definitions(-D_DEBUG)
+else()
+    add_compile_options(-O3)
 endif()
 
 file(
