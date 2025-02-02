@@ -40,7 +40,9 @@ namespace ntt
         GLFWimage icon;
         i32 width, height, channels;
 
-        icon.pixels = stbi_load("assets/images/icon.png", &width, &height, &channels, 4);
+        icon.pixels = stbi_load("assets/images/mini-icon.png", &width, &height, &channels, 4);
+        icon.height = height;
+        icon.width = width;
 
         if (icon.pixels)
         {
