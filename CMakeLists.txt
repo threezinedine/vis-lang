@@ -41,9 +41,11 @@ list(REMOVE_ITEM SOURCES ${WINDOW_RESOURCES} ${LINUX_RESOURCES} ${TEST_FILES})
 if (WIN32)
     add_definitions(-DWINDOWS)
     set(PLATFORM_RESOURCES ${WINDOW_RESOURCES})
+    set(RESOURCE_FILES icon.rc)
 elseif (UNIX)
     add_definitions(-DLINUX)
     set(PLATFORM_RESOURCES ${LINUX_RESOURCES})
+    set(RESOURCE_FILES)
 endif()
 
 add_executable(
@@ -51,6 +53,7 @@ add_executable(
     main.cpp
     ${SOURCES}
     ${PLATFORM_RESOURCES}
+    ${RESOURCE_FILES}
 )
 
 target_include_directories(
