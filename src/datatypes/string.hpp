@@ -63,8 +63,14 @@ namespace ntt
         void ToCharArray(char *&buffer, U32 &buffer_size) const;
 
         // operator overloads
-        String &operator=(const String &other);
+        String operator=(const String &other);
         bool operator==(const String &other) const;
+        String operator+(const String &other) const;
+        inline String &operator+=(const String &other)
+        {
+            *this = *this + other;
+            return *this;
+        }
 
     private:
         class Impl;

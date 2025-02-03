@@ -9,21 +9,23 @@ namespace ntt
     // Configuration for the ToString functionalities of
     //     the primitive datatypes and Object based.
 
-    String ToString(const U8 &value);
-    String ToString(const U16 &value);
-    String ToString(const U32 &value);
-    String ToString(const U64 &value);
-    String ToString(const I8 &value);
-    String ToString(const I16 &value);
-    String ToString(const I32 &value);
-    String ToString(const I64 &value);
-    String ToString(const F32 &value);
-    String ToString(const F64 &value);
-    String ToString(const B8 &value);
-    String ToString(const Object &value);
+    String ConvertToString(const U8 &value);
+    String ConvertToString(const U16 &value);
+    String ConvertToString(const U32 &value);
+    String ConvertToString(const U64 &value);
+    String ConvertToString(const I8 &value);
+    String ConvertToString(const I16 &value);
+    String ConvertToString(const I32 &value);
+    String ConvertToString(const I64 &value);
+    String ConvertToString(const F32 &value);
+    String ConvertToString(const F64 &value);
+    String ConvertToString(const B8 &value);
+    String ConvertToString(const Object &value);
 
     /**
      * Formats the given string with the given list of arguments.
+     * If there are more arguments than the placeholders in the string,
+     *      the extra arguments will be ignored.
      *
      * @example
      * ```cpp
@@ -35,16 +37,16 @@ namespace ntt
      */
 
     template <typename T, typename... Args>
-    String Format(const String &format_str, T arg, Args... args)
+    String Format(const String &format_str, const T &arg, Args... args)
     {
-        String step = format_str.Replace(FORMAT_SIGN, ToString(arg));
+        String step = format_str.Replace(FORMAT_SIGN, ConvertToString(arg));
         return Format(step, args...);
     }
 
     template <typename T>
-    String Format(const String &format_str, T arg)
+    String Format(const String &format_str, const T &arg)
     {
-        return format_str.Replace(FORMAT_SIGN, ToString(arg));
+        return format_str.Replace(FORMAT_SIGN, ConvertToString(arg));
     }
 
     String Format(const String &format_str, const String &arg);

@@ -36,3 +36,17 @@ TEST(StringTest, Test_Replace_All_Occurrences)
                     .Replace("World", "Universe", True),
                 testing::Eq("Hello, Universe! Universe!"));
 }
+
+TEST(StringTest, Test_Add_Operator)
+{
+    EXPECT_THAT(String("Hello, ") + String("World!"), testing::Eq("Hello, World!"));
+    EXPECT_THAT(String("Hello, ") + "World!", testing::Eq("Hello, World!"));
+
+    String str = "Hello, ";
+    str += "World!";
+    EXPECT_THAT(str, testing::Eq("Hello, World!"));
+
+    str = "Hello, ";
+    String newStr = str + "World!";
+    EXPECT_THAT(newStr, testing::Eq("Hello, World!"));
+}

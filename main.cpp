@@ -1,16 +1,12 @@
 #include <platforms/platforms.hpp>
 #include <utilities/utilities.hpp>
+#include <datatypes/datatypes.hpp>
 #include "imgui.h"
 
 using namespace ntt;
 
 int main(void)
 {
-    Print(Format("Hello, {}!", 10));
-    Print(Format("Hello, {}! I'm {} years old.", 10, 20.3));
-    Print(String("Hello, World! World!")
-              .Replace("World", "Universe", True));
-
     InitWindow("NTT Visualizer Language");
 
     while (!WindowShouldClose())

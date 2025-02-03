@@ -57,6 +57,11 @@ namespace ntt
             }
         }
 
+        if (index == 0)
+        {
+            return *this;
+        }
+
         replaced_str += original_str.substr(index, original_str.length() - index);
 
         return String(replaced_str.c_str());
@@ -90,7 +95,7 @@ namespace ntt
         buffer[buffer_size] = '\0';
     }
 
-    String &String::operator=(const String &other)
+    String String::operator=(const String &other)
     {
         if (this == &other)
         {
@@ -107,5 +112,12 @@ namespace ntt
     bool String::operator==(const String &other) const
     {
         return strcmp(m_impl->m_msg, other.m_impl->m_msg) == 0;
+    }
+
+    String String::operator+(const String &other) const
+    {
+        std::string result(m_impl->m_msg);
+        result += other.m_impl->m_msg;
+        return String(result.c_str());
     }
 } // namespace ntt

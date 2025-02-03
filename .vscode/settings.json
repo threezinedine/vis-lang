@@ -2,6 +2,7 @@
 	"files.associations": {
 		"*.py": "python",
 		"memory": "cpp",
-		"iosfwd": "cpp"
+		"iosfwd": "cpp",
+		"format": "cpp"
 	}
 }

@@ -5,66 +5,66 @@
 
 namespace ntt
 {
-    String ToString(const U8 &value)
+    String ConvertToString(const U8 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const U16 &value)
+    String ConvertToString(const U16 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const U32 &value)
+    String ConvertToString(const U32 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const U64 &value)
+    String ConvertToString(const U64 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const I8 &value)
+    String ConvertToString(const I8 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const I16 &value)
+    String ConvertToString(const I16 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const I32 &value)
+    String ConvertToString(const I32 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const I64 &value)
+    String ConvertToString(const I64 &value)
     {
         return String(std::to_string(value).c_str());
     }
 
-    String ToString(const F32 &value)
+    String ConvertToString(const F32 &value)
     {
         std::ostringstream ss;
         ss << std::fixed << std::setprecision(2) << value;
         return String(ss.str().c_str());
     }
 
-    String ToString(const F64 &value)
+    String ConvertToString(const F64 &value)
     {
         std::ostringstream ss;
         ss << std::fixed << std::setprecision(2) << value;
         return String(ss.str().c_str());
     }
 
-    String ToString(const B8 &value)
+    String ConvertToString(const B8 &value)
     {
         return value ? "true" : "false";
     }
 
-    String ToString(const Object &value)
+    String ConvertToString(const Object &value)
     {
         return value.ToString();
     }

@@ -12,6 +12,11 @@ namespace ntt
     class Object
     {
     public:
+        Object();
+        Object(const Object &);
+
+        virtual ~Object();
+
         /**
          * Overide this method and the result of this method will be displayed when
          *      the object is printed or formatted as a new parameter of a string.
