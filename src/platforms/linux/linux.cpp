@@ -5,7 +5,7 @@
 
 namespace ntt
 {
-    void Print(const char *msg, DefaultColor color, bool newLine)
+    void Print(const String &msg, DefaultColor color, bool newLine)
     {
         std::string colorCode;
 
@@ -61,11 +61,17 @@ namespace ntt
             break;
         }
 
-        std::cout << "\033[" << colorCode << "m" << msg << "\033[0m";
+        char *msgChar = nullptr;
+        U32 msgSize = 0;
+        msg.ToCharArray(msgChar, msgSize);
+
+        std::cout << "\033[" << colorCode << "m" << msgChar << "\033[0m";
         if (newLine)
         {
             std::cout << std::endl;
         }
+
+        delete[] msgChar;
 
         return;
     }

@@ -82,6 +82,12 @@ endif()
 
 add_subdirectory(vendors)
 
+foreach(SOURCE ${SOURCES})
+    get_filename_component(FILE_NAME ${SOURCE} NAME)
+    message(STATUS "Found source file: ${FILE_NAME}")
+endforeach()
+
+
 add_executable(
     ${PROJECT_NAME}
     main.cpp

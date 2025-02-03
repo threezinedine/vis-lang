@@ -21,7 +21,7 @@ namespace ntt
      *
      * @return true if the application should be ended, false otherwise.
      */
-    b8 WindowShouldClose();
+    B8 WindowShouldClose();
 
     /**
      * Used for catching the actions from user inputs (like keyboard, mouse, etc.) or other

@@ -5,7 +5,7 @@
 
 namespace ntt
 {
-    void Print(const char *msg, DefaultColor color, bool newLine)
+    void Print(const String &msg, DefaultColor color, bool newLine)
     {
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -61,7 +61,11 @@ namespace ntt
             break;
         }
 
-        std::cout << msg;
+        char *msgChar = nullptr;
+        U32 msgSize = 0;
+        msg.ToCharArray(msgChar, msgSize);
+
+        std::cout << msgChar;
 
         if (newLine)
         {
@@ -70,6 +74,8 @@ namespace ntt
 
         // Reset the color to white
         SetConsoleTextAttribute(hConsole, 15);
+
+        delete[] msgChar;
 
         return;
     }

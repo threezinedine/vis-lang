@@ -1,6 +1,7 @@
 {
-    "files.associations": {
-        "*.py": "python",
-        "memory": "cpp"
-    }
+	"files.associations": {
+		"*.py": "python",
+		"memory": "cpp",
+		"iosfwd": "cpp"
+	}
 }

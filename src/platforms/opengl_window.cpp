@@ -56,7 +56,7 @@ namespace ntt
         }
 
         GLFWimage icon;
-        i32 width, height, channels;
+        I32 width, height, channels;
 
         icon.pixels = stbi_load("assets/images/mini-icon.png", &width, &height, &channels, 4);
         icon.height = height;
@@ -133,7 +133,7 @@ namespace ntt
         glfwSwapBuffers(s_window);
     }
 
-    b8 WindowShouldClose()
+    B8 WindowShouldClose()
     {
         return glfwWindowShouldClose(s_window);
     }

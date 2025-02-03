@@ -1,6 +1,7 @@
 #pragma once
 
 #include <datatypes/color.hpp>
+#include <datatypes/string.hpp>
 
 namespace ntt
 {
@@ -20,5 +21,5 @@ namespace ntt
      * @example
      *     Print("Hello, World!", DefaultColor::GREEN);
      */
-    void Print(const char *msg, DefaultColor color = DefaultColor::WHITE, bool newLine = true);
+    void Print(const String &msg, DefaultColor color = DefaultColor::WHITE, bool newLine = true);
 }
