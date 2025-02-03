@@ -1,18 +1,25 @@
 # A Visual Programming Language for System Dynamics Modeling
 
+![GitHub](https://img.shields.io/github/license/threezinedine/vis-lang)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/threezinedine/vis-lang)
+![GitHub issues](https://img.shields.io/github/issues/threezinedine/vis-lang)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/threezinedine/vis-lang)
+
+---
+
 ## Table of Contents
 
--   [A Visual Programming Language for System Dynamics Modeling](#a-visual-programming-language-for-system-dynamics-modeling)
-    -   [Table of Contents](#table-of-contents)
-    -   [Introduction](#introduction)
-    -   [Features](#features)
-    -   [Installation](#installation)
-        -   [By cloning the repository](#by-cloning-the-repository)
-            -   [Prerequisites](#prerequisites)
-                -   [Windows](#windows)
-                -   [Linux](#linux)
-            -   [Compiling from source](#compiling-from-source)
-    -   [Contact](#contact)
+- [A Visual Programming Language for System Dynamics Modeling](#a-visual-programming-language-for-system-dynamics-modeling)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Installation](#installation)
+    - [By cloning the repository](#by-cloning-the-repository)
+      - [Prerequisites](#prerequisites)
+        - [Windows](#windows)
+        - [Linux](#linux)
+      - [Compiling from source](#compiling-from-source)
+  - [Contact](#contact)
 
 ## Introduction
 
