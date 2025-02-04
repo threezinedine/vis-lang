@@ -1,5 +1,4 @@
 #pragma once
-#include "memory.hpp"
 #include "common.hpp"
 
 namespace ntt
@@ -73,7 +72,6 @@ namespace ntt
         }
 
     private:
-        class Impl;
-        Scope<Impl> m_impl;
+        char *m_msg;
     };
 } // namespace ntt

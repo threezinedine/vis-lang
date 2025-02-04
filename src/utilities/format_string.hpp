@@ -21,6 +21,7 @@ namespace ntt
     String ConvertToString(const F64 &value);
     String ConvertToString(const B8 &value);
     String ConvertToString(const Object &value);
+    String ConvertToString(const std::nullptr_t &value);
 
     /**
      * Formats the given string with the given list of arguments.

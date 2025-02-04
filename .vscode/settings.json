@@ -3,6 +3,7 @@
 		"*.py": "python",
 		"memory": "cpp",
 		"iosfwd": "cpp",
-		"format": "cpp"
+		"format": "cpp",
+		"xtr1common": "cpp"
 	}
 }

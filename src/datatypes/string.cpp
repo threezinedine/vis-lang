@@ -5,28 +5,21 @@
 
 namespace ntt
 {
-    class String::Impl
-    {
-    public:
-        char *m_msg;
-    };
-
     String::String(const char *msg)
-        : m_impl(CreateScope<Impl>())
     {
-        m_impl->m_msg = new char[strlen(msg) + 1];
-        strcpy(m_impl->m_msg, msg);
+        m_msg = new char[strlen(msg) + 1];
+        strcpy(m_msg, msg);
     }
 
-    String::String(const String &other) : m_impl(CreateScope<Impl>())
+    String::String(const String &other)
     {
-        m_impl->m_msg = new char[strlen(other.m_impl->m_msg) + 1];
-        strcpy(m_impl->m_msg, other.m_impl->m_msg);
+        m_msg = new char[strlen(other.m_msg) + 1];
+        strcpy(m_msg, other.m_msg);
     }
 
     String::~String()
     {
-        delete[] m_impl->m_msg;
+        delete[] m_msg;
     }
 
     String String::Replace(const String &old_str, const String &new_str, B8 all) const
@@ -37,9 +30,9 @@ namespace ntt
         }
 
         // TODO: Try to use raw char array instead of std::string later
-        std::string original_str(m_impl->m_msg);
-        std::string old_str_str(old_str.m_impl->m_msg);
-        std::string new_str_str(new_str.m_impl->m_msg);
+        std::string original_str(m_msg);
+        std::string old_str_str(old_str.m_msg);
+        std::string new_str_str(new_str.m_msg);
         std::string replaced_str = "";
 
         size_t pos = 0;
@@ -69,7 +62,7 @@ namespace ntt
 
     U32 String::Length() const
     {
-        return strlen(m_impl->m_msg);
+        return strlen(m_msg);
     }
 
     void String::ToCharArray(char *&buffer, U32 &buffer_size) const
@@ -77,21 +70,21 @@ namespace ntt
         // check if the buffer is not allocated
         if (buffer == nullptr)
         {
-            buffer = (char *)malloc(strlen(m_impl->m_msg) + 1);
-            buffer_size = strlen(m_impl->m_msg);
+            buffer = (char *)malloc(strlen(m_msg) + 1);
+            buffer_size = strlen(m_msg);
         }
         else
         {
             // check if the buffer size is not enough
-            if (sizeof(buffer) < strlen(m_impl->m_msg))
+            if (sizeof(buffer) < strlen(m_msg))
             {
                 delete[] buffer;
-                buffer = (char *)malloc(strlen(m_impl->m_msg) + 1);
-                buffer_size = strlen(m_impl->m_msg);
+                buffer = (char *)malloc(strlen(m_msg) + 1);
+                buffer_size = strlen(m_msg);
             }
         }
 
-        memcpy(buffer, m_impl->m_msg, buffer_size);
+        memcpy(buffer, m_msg, buffer_size);
         buffer[buffer_size] = '\0';
     }
 
@@ -102,22 +95,22 @@ namespace ntt
             return *this;
         }
 
-        delete[] m_impl->m_msg;
-        m_impl->m_msg = new char[strlen(other.m_impl->m_msg) + 1];
-        strcpy(m_impl->m_msg, other.m_impl->m_msg);
+        delete[] m_msg;
+        m_msg = new char[strlen(other.m_msg) + 1];
+        strcpy(m_msg, other.m_msg);
 
         return *this;
     }
 
     bool String::operator==(const String &other) const
     {
-        return strcmp(m_impl->m_msg, other.m_impl->m_msg) == 0;
+        return strcmp(m_msg, other.m_msg) == 0;
     }
 
     String String::operator+(const String &other) const
     {
-        std::string result(m_impl->m_msg);
-        result += other.m_impl->m_msg;
+        std::string result(m_msg);
+        result += other.m_msg;
         return String(result.c_str());
     }
 } // namespace ntt

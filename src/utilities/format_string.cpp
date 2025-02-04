@@ -73,4 +73,9 @@ namespace ntt
     {
         return format_str.Replace(FORMAT_SIGN, arg);
     }
+
+    String ConvertToString(const std::nullptr_t &value)
+    {
+        return "null";
+    }
 } // namespace ntt

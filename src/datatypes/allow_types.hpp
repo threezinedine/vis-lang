@@ -32,4 +32,5 @@ namespace ntt
     DEFINE_ALLOW_TYPE(F64)
     DEFINE_ALLOW_TYPE(B8)
     DEFINE_ALLOW_TYPE(Object)
+    DEFINE_ALLOW_TYPE(std::nullptr_t)
 } // namespace ntt
