@@ -6,24 +6,6 @@
 
 namespace ntt
 {
-    // template <typename T>
-    // using Scope = std::unique_ptr<T>;
-
-    // template <typename T, typename... Args>
-    // constexpr Scope<T> CreateScope(Args &&...args)
-    // {
-    //     return std::make_unique<T>(std::forward<Args>(args)...);
-    // }
-
-    // template <typename T>
-    // using Ref = std::shared_ptr<T>;
-
-    // template <typename T, typename... Args>
-    // constexpr Ref<T> CreateRef(Args &&...args)
-    // {
-    //     return std::make_shared<T>(std::forward<Args>(args)...);
-    // }
-
     template <typename T>
     class Scope : public std::unique_ptr<T>, public Object
     {
@@ -43,5 +25,26 @@ namespace ntt
     constexpr Scope<T> CreateScope(Args &&...args)
     {
         return std::make_unique<T>(std::forward<Args>(args)...);
+    }
+
+    template <typename T>
+    class Ref : public std::shared_ptr<T>, public Object
+    {
+    public:
+        Ref() = default;
+        Ref(T *ptr) : std::shared_ptr<T>(ptr) {}
+        Ref(std::shared_ptr<T> ptr) : std::shared_ptr<T>(std::move(ptr)) {}
+
+        String ToString() const override
+        {
+            return Format("<Ref value={} />",
+                          ConvertToString(**this));
+        }
+    };
+
+    template <typename T, typename... Args>
+    constexpr Ref<T> CreateRef(Args &&...args)
+    {
+        return std::make_shared<T>(std::forward<Args>(args)...);
     }
 } // namespace ntt

@@ -48,3 +48,22 @@ TEST(ArrayTest, Test_Array_Of_Unique_Ptr)
     EXPECT_EQ(arr2.ToString(),
               "[<Scope value=3 />, <Scope value=4 />]");
 }
+
+TEST(ArrayTest, Test_Array_Of_Ref_Ptr)
+{
+    Array<Ref<TestObject>> arr;
+    arr.push_back(CreateRef<TestObject>());
+
+    EXPECT_EQ(arr.size(), 1);
+    EXPECT_EQ(arr.ToString(), "[<Ref value=TestObject />]");
+
+    Array<Ref<U8>> arr2;
+    arr2.push_back(CreateRef<U8>(3));
+    arr2.push_back(CreateRef<U8>(4));
+
+    EXPECT_EQ(arr2.size(), 2);
+    EXPECT_EQ(*arr2[0], 3);
+
+    EXPECT_EQ(arr2.ToString(),
+              "[<Ref value=3 />, <Ref value=4 />]");
+}
