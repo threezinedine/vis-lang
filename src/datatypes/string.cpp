@@ -62,6 +62,11 @@ namespace ntt
 
     String String::FillWith(U32 length, const String &fill_str, B8 atStart, B8 exact) const
     {
+        if (fill_str == "")
+        {
+            return *this;
+        }
+
         if (Length() >= length)
         {
             return *this;
@@ -81,6 +86,11 @@ namespace ntt
             {
                 result += fill_str;
             }
+        }
+
+        if (exact)
+        {
+            result = result.SubString(0, length);
         }
 
         return result;

@@ -41,7 +41,9 @@ namespace ntt
          *      string have the >= number of characters.
          *
          * @param length The number of characters that the string should at least have.
-         * @param fill_str The string to fill the current string with.
+         * @param fill_str The string to fill the current string with. The length of the
+         *      `fill_str` must be not zero else the method will do nothing and return the
+         *      original string.
          * @param atStart If this is set to TRUE, the `fill_str` will be added to the start
          *      of the string. Otherwise, it will be added to the end of the string. The
          *      default value is TRUE.

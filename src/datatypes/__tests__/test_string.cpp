@@ -56,6 +56,12 @@ TEST(StringTest, TestFillWith)
     EXPECT_EQ(String("Test").FillWith(2, " "), "Test");
     EXPECT_EQ(String("Test").FillWith(6, " "), "  Test");
     EXPECT_EQ(String("Test").FillWith(6, " ", False), "Test  ");
+
+    // Test with empty string
+    EXPECT_EQ(String("").FillWith(6, " "), "      ");
+
+    EXPECT_EQ(String("alo").FillWith(6, ""), "alo");
+    EXPECT_EQ(String("Test").FillWith(7, "  ", False, True), "Test   ");
 }
 
 TEST(StringTest, TestSubString)
