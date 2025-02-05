@@ -4,6 +4,8 @@
 		"memory": "cpp",
 		"iosfwd": "cpp",
 		"format": "cpp",
-		"xtr1common": "cpp"
+		"xtr1common": "cpp",
+		"xlocale": "cpp",
+		"xstring": "cpp"
 	}
 }

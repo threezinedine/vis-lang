@@ -24,4 +24,6 @@ TEST(FormatStringTest, FormatStringWithIntData)
 
     EXPECT_THAT(Format("Hello, {}!", False),
                 testing::Eq("Hello, false!"));
+
+    EXPECT_EQ(Format("Hello,"), "Hello,");
 }

@@ -1,5 +1,6 @@
 #include "date_time.hpp"
 #include <utilities/format_string.hpp>
+#include <chrono>
 
 namespace ntt
 {
@@ -48,18 +49,43 @@ namespace ntt
     String DateTime::WithFormat(const String &format) const
     {
         return format.Replace("%Y", ConvertToString(m_year), True)
-            .Replace("%m", ConvertToString(m_month), True)
-            .Replace("%d", ConvertToString(m_day), True)
-            .Replace("%H", ConvertToString(m_hour), True)
-            .Replace("%M", ConvertToString(m_minute), True)
-            .Replace("%S", ConvertToString(m_second), True)
+            .Replace("%m", ConvertToString(m_month).FillWith(2, "0"), True)
+            .Replace("%d", ConvertToString(m_day).FillWith(2, "0"), True)
+            .Replace("%H", ConvertToString(m_hour).FillWith(2, "0"), True)
+            .Replace("%M", ConvertToString(m_minute).FillWith(2, "0"), True)
+            .Replace("%S", ConvertToString(m_second).FillWith(2, "0"), True)
             .Replace("%C", ConvertMonthToText(m_month), True);
     }
 
     String DateTime::ToString() const
     {
-        return Format("<DateTime {}-{}-{} {}:{}:{} />",
-                      m_year, m_month, m_day,
-                      m_hour, m_minute, m_second);
+        return Format("<DateTime {} />", WithFormat("%Y-%m-%d %H:%M:%S"));
+    }
+
+    DateTime DateTime::Now(B8 uct)
+    {
+        DateTime dt;
+
+        auto now = std::chrono::system_clock::now();
+        auto now_time = std::chrono::system_clock::to_time_t(now);
+
+        struct tm *time_info;
+        if (uct)
+        {
+            time_info = std::gmtime(&now_time);
+        }
+        else
+        {
+            time_info = std::localtime(&now_time);
+        }
+
+        dt.m_year = time_info->tm_year + 1900;
+        dt.m_month = time_info->tm_mon + 1;
+        dt.m_day = time_info->tm_mday;
+        dt.m_hour = time_info->tm_hour;
+        dt.m_minute = time_info->tm_min;
+        dt.m_second = time_info->tm_sec;
+
+        return dt;
     }
 } // namespace ntt

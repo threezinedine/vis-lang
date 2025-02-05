@@ -60,6 +60,50 @@ namespace ntt
         return String(replaced_str.c_str());
     }
 
+    String String::FillWith(U32 length, const String &fill_str, B8 atStart, B8 exact) const
+    {
+        if (Length() >= length)
+        {
+            return *this;
+        }
+
+        String result = *this;
+        if (atStart)
+        {
+            while (result.Length() < length)
+            {
+                result = fill_str + result;
+            }
+        }
+        else
+        {
+            while (result.Length() < length)
+            {
+                result += fill_str;
+            }
+        }
+
+        return result;
+    }
+
+    String String::SubString(U32 start, U32 length) const
+    {
+        if (start >= Length())
+        {
+            return "";
+        }
+
+        if (start + length > Length())
+        {
+            length = Length() - start;
+        }
+
+        char *buffer = new char[length + 1];
+        memcpy(buffer, m_msg + start, length);
+        buffer[length] = '\0';
+        return String(buffer);
+    }
+
     U32 String::Length() const
     {
         return strlen(m_msg);
@@ -70,7 +114,7 @@ namespace ntt
         // check if the buffer is not allocated
         if (buffer == nullptr)
         {
-            buffer = (char *)malloc(strlen(m_msg) + 1);
+            buffer = new char[strlen(m_msg) + 1];
             buffer_size = strlen(m_msg);
         }
         else
@@ -79,7 +123,7 @@ namespace ntt
             if (sizeof(buffer) < strlen(m_msg))
             {
                 delete[] buffer;
-                buffer = (char *)malloc(strlen(m_msg) + 1);
+                buffer = new char[strlen(m_msg) + 1];
                 buffer_size = strlen(m_msg);
             }
         }

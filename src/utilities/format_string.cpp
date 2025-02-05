@@ -78,4 +78,9 @@ namespace ntt
     {
         return "null";
     }
+
+    String Format(const String &format_str)
+    {
+        return format_str;
+    }
 } // namespace ntt

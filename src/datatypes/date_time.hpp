@@ -37,13 +37,13 @@ namespace ntt
         /**
          * Get the datetime information string in a user-defined way. The
          *      format string can contain the following placeholders:
-         *      - %Y: Year with century as a decimal number.
-         *      - %m: Month as a decimal number [01,12].
-         *      - %d: Day of the month as a decimal number [01,31].
+         *      - %Y: Year with century as a decimal number (format YYYY)
+         *      - %m: Month as a decimal number [01,12] (format mm)
+         *      - %d: Day of the month as a decimal number [01,31] (format dd)
          *
-         *      - %H: Hour (24-hour clock) as a decimal number [00,23].
-         *      - %M: Minute as a decimal number [00,60].
-         *      - %S: Second as a decimal number [00,60].
+         *      - %H: Hour (24-hour clock) as a decimal number [00,23] (format HH)
+         *      - %M: Minute as a decimal number [00,60] (format MM)
+         *      - %S: Second as a decimal number [00,60] (format SS)
          *
          *      - %C: Month as locale’s abbreviated name (e.g., Jan, Feb, Mar).
          *
@@ -61,7 +61,27 @@ namespace ntt
          */
         String WithFormat(const String &format) const;
 
+        /**
+         * Retrieve the current date and time information with the UTC timezone
+         *      or the local timezone of the system.
+         *
+         * @param uct If the value is True, the function will return the current
+         *      date and time information with the UTC timezone. Otherwise, the
+         *      function will return the current date and time information with
+         *      the local timezone of the system.
+         *
+         * @return The current date and time information.
+         */
+        static DateTime Now(B8 uct = False);
+
         String ToString() const override;
+
+        inline U16 GetYear() const { return m_year; }
+        inline U8 GetMonth() const { return m_month; }
+        inline U8 GetDay() const { return m_day; }
+        inline U8 GetHour() const { return m_hour; }
+        inline U8 GetMinute() const { return m_minute; }
+        inline U8 GetSecond() const { return m_second; }
 
     private:
         U16 m_year;

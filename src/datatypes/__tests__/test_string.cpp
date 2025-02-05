@@ -50,3 +50,20 @@ TEST(StringTest, Test_Add_Operator)
     String newStr = str + "World!";
     EXPECT_THAT(newStr, testing::Eq("Hello, World!"));
 }
+
+TEST(StringTest, TestFillWith)
+{
+    EXPECT_EQ(String("Test").FillWith(2, " "), "Test");
+    EXPECT_EQ(String("Test").FillWith(6, " "), "  Test");
+    EXPECT_EQ(String("Test").FillWith(6, " ", False), "Test  ");
+}
+
+TEST(StringTest, TestSubString)
+{
+    EXPECT_EQ(String("Hello, World!").SubString(0, 5), "Hello");
+    EXPECT_EQ(String("Hello, World!").SubString(7, 5), "World");
+    EXPECT_EQ(String("Hello, World!").SubString(7, 10), "World!");
+    EXPECT_EQ(String("Hello, World!").SubString(7, 100), "World!");
+    EXPECT_EQ(String("Hello, World!").SubString(30, 100), "");
+    EXPECT_EQ(String("Hello, World!").SubString(1, 0), "");
+}

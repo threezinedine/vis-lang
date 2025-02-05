@@ -35,6 +35,45 @@ namespace ntt
                        B8 all = False) const;
 
         /**
+         * Use this method to extend the current string with a given number of characters.
+         * If the number of characters is less than the current setup length, the method
+         *      will add the `fill_str` to the start or the end of the string to make the
+         *      string have the >= number of characters.
+         *
+         * @param length The number of characters that the string should at least have.
+         * @param fill_str The string to fill the current string with.
+         * @param atStart If this is set to TRUE, the `fill_str` will be added to the start
+         *      of the string. Otherwise, it will be added to the end of the string. The
+         *      default value is TRUE.
+         * @param exact If this is set to TRUE, the `fill_str` will be added to the string
+         *      until the string has the exact number of characters, if the final added
+         *      makes the string longer than the length, the method will add only a portion
+         *      of the `fill_str` at the last step.
+         *      If this is set to FALSE, the `fill_str` will be added to the string until the
+         *      string has at least the number of characters. The default value is FALSE.
+         *
+         * @note In the case the length of the string >= length, this method call will be ignored,
+         *  the original string will be returned.
+         */
+        String FillWith(U32 length, const String &fill_str,
+                        B8 atStart = True, B8 exact = False) const;
+
+        /**
+         * Use to extract a portion of the string from the original string. The method will
+         *      return a unique string instance that contains the extracted portion of the
+         *      original string.
+         *
+         * @param start The index of the first character of the extracted string. The index
+         *      is 0-based. If the start index is greater than the number of characters in the
+         *      original string, the method will return an empty string.
+         * @param length The number of characters to extract from the original string. If the
+         *      length is greater than the number of characters from the start index to the
+         *      end of the string, the method will extract all the characters from the start
+         *      index to the end of the string.
+         */
+        String SubString(U32 start, U32 length) const;
+
+        /**
          * Get the number of characters in the string (excluding the null-terminator). Empty
          *      string will return 0.
          */

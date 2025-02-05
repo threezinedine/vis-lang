@@ -51,4 +51,5 @@ namespace ntt
     }
 
     String Format(const String &format_str, const String &arg);
+    String Format(const String &format_str);
 }
