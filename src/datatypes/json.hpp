@@ -22,6 +22,9 @@ namespace ntt
         JSON_GET_METHOD(U32);
         JSON_GET_METHOD(U16);
         JSON_GET_METHOD(U8);
+        JSON_GET_METHOD(I32);
+        JSON_GET_METHOD(I16);
+        JSON_GET_METHOD(I8);
         JSON_GET_METHOD(F32);
         JSON_GET_METHOD(F64);
         JSON_GET_METHOD(B8);

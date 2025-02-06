@@ -61,3 +61,10 @@ TEST_F(JsonTest, Test_Get)
     EXPECT_EQ(json.GetString("string", "default"), "hello world");
     EXPECT_EQ(json.GetString("string-non-exist", "default"), "default");
 }
+
+TEST_F(JsonTest, Test_GetWithInvalidType)
+{
+    EXPECT_EQ(json.GetString("float", "default"), "default");
+    EXPECT_EQ(json.GetU32("string", 9), 9);
+    EXPECT_EQ(json.GetB8("int", False), True);
+}
