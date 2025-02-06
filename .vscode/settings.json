@@ -6,6 +6,7 @@
 		"format": "cpp",
 		"xtr1common": "cpp",
 		"xlocale": "cpp",
-		"xstring": "cpp"
+		"xstring": "cpp",
+		"regex": "cpp"
 	}
 }

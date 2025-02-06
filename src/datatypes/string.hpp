@@ -10,6 +10,7 @@ namespace ntt
     class String
     {
     public:
+        String();
         String(const char *msg);
         String(const String &other);
         ~String();
@@ -103,6 +104,11 @@ namespace ntt
         void ToCharArray(char *&buffer, U32 &buffer_size) const;
 
         // operator overloads
+        bool operator<(const String &other) const;
+        bool operator>(const String &other) const;
+        bool operator<=(const String &other) const;
+        bool operator>=(const String &other) const;
+        bool operator!=(const String &other) const;
         String operator=(const String &other);
         bool operator==(const String &other) const;
         String operator+(const String &other) const;

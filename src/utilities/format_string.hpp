@@ -22,6 +22,7 @@ namespace ntt
     String ConvertToString(const B8 &value);
     String ConvertToString(const Object &value);
     String ConvertToString(const std::nullptr_t &value);
+    String ConvertToString(const String &value);
 
     /**
      * Formats the given string with the given list of arguments.
@@ -50,6 +51,5 @@ namespace ntt
         return format_str.Replace(FORMAT_SIGN, ConvertToString(arg));
     }
 
-    String Format(const String &format_str, const String &arg);
     String Format(const String &format_str);
 }

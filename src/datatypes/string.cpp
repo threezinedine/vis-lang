@@ -5,6 +5,12 @@
 
 namespace ntt
 {
+    String::String()
+    {
+        m_msg = new char[1];
+        m_msg[0] = '\0';
+    }
+
     String::String(const char *msg)
     {
         m_msg = new char[strlen(msg) + 1];
@@ -166,5 +172,27 @@ namespace ntt
         std::string result(m_msg);
         result += other.m_msg;
         return String(result.c_str());
+    }
+
+    bool String::operator<(const String &other) const
+    {
+        return strcmp(m_msg, other.m_msg) < 0;
+    }
+    bool String::operator>(const String &other) const
+    {
+        return strcmp(m_msg, other.m_msg) > 0;
+    }
+    bool String::operator<=(const String &other) const
+    {
+        return strcmp(m_msg, other.m_msg) <= 0;
+    }
+    bool String::operator>=(const String &other) const
+    {
+        return strcmp(m_msg, other.m_msg) >= 0;
+    }
+
+    bool String::operator!=(const String &other) const
+    {
+        return strcmp(m_msg, other.m_msg) != 0;
     }
 } // namespace ntt

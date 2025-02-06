@@ -51,6 +51,9 @@ list(REMOVE_ITEM SOURCES ${WINDOW_RESOURCES} ${LINUX_RESOURCES} ${TEST_FILES})
 set(UNIT_TEST_SOURCES ${SOURCES})
 list(REMOVE_ITEM UNIT_TEST_SOURCES ${NON_UNIT_TEST_FILES})
 
+# all shared vendors 
+set(VENDOR_LIBS nlohmann_json)
+
 set(GRAPHICS_API_LIBRARIES)
 
 if (USE_OPENGL)
@@ -102,6 +105,7 @@ target_link_libraries(
     ${GRAPHICS_API_LIBRARIES}
     STBImage
     ImGui
+    ${VENDOR_LIBS}
 )
 
 target_include_directories(
@@ -132,6 +136,7 @@ target_link_libraries(
     gtest_main
     gmock
     gmock_main
+    ${VENDOR_LIBS}
 )
 
 # copy the whole assets directory to the build directory (overwriting the existing one)

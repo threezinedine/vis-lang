@@ -7,8 +7,9 @@ using namespace ntt;
 
 int main(void)
 {
-    Print(Format("Hello World"));
-    Print(Format("Now: {}", DateTime::Now()));
+    Json json("{\"hello\": \"world\"}");
+    Print(json.ToString());
+
     InitWindow("NTT Visualizer Language");
 
     while (!WindowShouldClose())

@@ -69,14 +69,14 @@ namespace ntt
         return value.ToString();
     }
 
-    String Format(const String &format_str, const String &arg)
-    {
-        return format_str.Replace(FORMAT_SIGN, arg);
-    }
-
     String ConvertToString(const std::nullptr_t &value)
     {
         return "null";
+    }
+
+    String ConvertToString(const String &value)
+    {
+        return value;
     }
 
     String Format(const String &format_str)

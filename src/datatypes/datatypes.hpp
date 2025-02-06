@@ -6,3 +6,4 @@
 #include "color.hpp"
 #include "array.hpp"
 #include "date_time.hpp"
+#include "dictionary.hpp"
