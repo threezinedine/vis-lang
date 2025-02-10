@@ -36,6 +36,7 @@ file(
     GLOB
     TEST_FILES 
     src/**/__tests__/*.cpp
+    src/**/**/__tests__/*.cpp
 )
 
 file(
@@ -86,8 +87,11 @@ endif()
 add_subdirectory(vendors)
 
 foreach(SOURCE ${SOURCES})
-    get_filename_component(FILE_NAME ${SOURCE} NAME)
-    message(STATUS "Found source file: ${FILE_NAME}")
+    message(STATUS "Found source file: ${SOURCE}")
+endforeach()
+
+foreach(TEST_FILE ${TEST_FILES})
+    message(STATUS "Found test file: ${TEST_FILE}")
 endforeach()
 
 

@@ -74,7 +74,31 @@ namespace ntt
          */
         static DateTime Now(B8 uct = False);
 
+        /**
+         * Extract the DateTime data from the Unix timestamp. The function will
+         *      return the DateTime object with the given Unix timestamp. If the
+         *      uct parameter is True, the function will return the DateTime object
+         *      with the UTC timezone. Otherwise, the function will return the DateTime
+         *      object with the local timezone of the system.
+         *
+         * @param timestamp The Unix timestamp which will be converted to the DateTime object.
+         *      The Unix timestamp is the number of seconds since the Unix epoch time.
+         *      The Unix epoch time is 1970-01-01 00:00:00.
+         *
+         * @param uct If the value is True, the function will return the DateTime object with
+         *      the UTC timezone. Otherwise, the function will return the DateTime object with
+         *      the local timezone of the system.
+         */
+        static DateTime FromUnix(I64 timestamp, B8 uct = False);
+
         String ToString() const override;
+
+        /**
+         * Get the Unix timestamp value of current object.
+         *
+         * @return The Unix timestamp value of the current object.
+         */
+        I64 ToUnix() const;
 
         inline U16 GetYear() const { return m_year; }
         inline U8 GetMonth() const { return m_month; }

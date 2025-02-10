@@ -88,4 +88,41 @@ namespace ntt
 
         return dt;
     }
+
+    DateTime DateTime::FromUnix(I64 timestamp, B8 uct)
+    {
+        DateTime dt;
+
+        struct tm *time_info;
+        if (uct)
+        {
+            time_info = std::gmtime(&timestamp);
+        }
+        else
+        {
+            time_info = std::localtime(&timestamp);
+        }
+
+        dt.m_year = time_info->tm_year + 1900;
+        dt.m_month = time_info->tm_mon + 1;
+        dt.m_day = time_info->tm_mday;
+        dt.m_hour = time_info->tm_hour;
+        dt.m_minute = time_info->tm_min;
+        dt.m_second = time_info->tm_sec;
+
+        return dt;
+    }
+
+    I64 DateTime::ToUnix() const
+    {
+        struct tm time_info;
+        time_info.tm_year = m_year - 1900;
+        time_info.tm_mon = m_month - 1;
+        time_info.tm_mday = m_day;
+        time_info.tm_hour = m_hour;
+        time_info.tm_min = m_minute;
+        time_info.tm_sec = m_second;
+
+        return std::mktime(&time_info);
+    }
 } // namespace ntt

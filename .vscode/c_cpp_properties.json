@@ -6,7 +6,9 @@
 				"${workspaceFolder}/**",
 				"${workspaceFolder}/vendors/stb_image/*",
 				"${workspaceFolder}/vendors/glew/include/*",
-				"${workspaceFolder}/vendors/json/include/*"
+				"${workspaceFolder}/vendors/json/include/*",
+				"${workspaceFolder}/vendors/googletest/googletest/include/*",
+				"${workspaceFolder}/vendors/googletest/googlemock/include/*"
 			],
 			"defines": ["_DEBUG", "UNICODE", "_UNICODE", "USE_OPENGL"],
 			"windowsSdkVersion": "10.0.22621.0",

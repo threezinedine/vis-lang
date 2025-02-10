@@ -7,9 +7,6 @@ using namespace ntt;
 
 int main(void)
 {
-    Json json("{\"hello\": \"world\"}");
-    Print(json.ToString());
-
     InitWindow("NTT Visualizer Language");
 
     while (!WindowShouldClose())
