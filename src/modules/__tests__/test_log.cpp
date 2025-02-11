@@ -2,9 +2,59 @@
 #include <gmock/gmock.h>
 
 #include <modules/log/log.hpp>
+#include <macros/macros.hpp>
 
 using namespace ntt;
 
-class TestLogHandler : public LogHandler
+static Array<LogMessage> s_messages;
+
+///////////////////// TestHandler Define //////////////////////
+/**
+ * Only used for testing purposes.
+ */
+class TestHandler : public LogHandler
 {
+public:
+    TestHandler(U8 level) : LogHandler(level)
+    {
+    }
+
+    ~TestHandler() override
+    {
+    }
+
+    static Array<LogMessage> messages;
+
+protected:
+    void HandleImpl(const LogMessage &message) override
+    {
+        s_messages.push_back(message);
+    }
 };
+
+///////////////////// TestHandler Define //////////////////////
+
+class TestLogHandler : public ::testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        s_messages.clear();
+    }
+
+    void TearDown() override
+    {
+        LogShutdown();
+    }
+};
+
+TEST_F(TestLogHandler, ConfigureLogHandle)
+{
+    LogInit({
+        static_cast<Ref<LogHandler>>(CreateRef<TestHandler>(NTT_LOG_LEVEL_INFO)),
+    });
+
+    Log(NTT_LOG_LEVEL_INFO, "Testfile.cpp", 10, "Hello, World!");
+
+    ASSERT_EQ(s_messages.size(), 1);
+}

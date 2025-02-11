@@ -1,0 +1,7 @@
+event system design paths:
+- event system is a simple publish/subscribe system.
+    - pros:
+    - cons:
+- event will organize the whole system.
+    - pros:
+    - cons:
