@@ -1,5 +1,6 @@
 #pragma once
 #include "common.hpp"
+#include <string>
 
 namespace ntt
 {
@@ -7,11 +8,12 @@ namespace ntt
      * Application self-defined string data type. This class will contains multiple supported
      *      string operations that are not available in the standard C++ string class.
      */
-    class String
+    class String : public std::string
     {
     public:
         String();
         String(const char *msg);
+        String(const std::string &msg);
         String(const String &other);
         ~String();
 
@@ -76,49 +78,6 @@ namespace ntt
          */
         String SubString(U32 start, U32 length) const;
 
-        /**
-         * Get the number of characters in the string (excluding the null-terminator). Empty
-         *      string will return 0.
-         */
-        U32 Length() const;
-
-        /**
-         * Used to copy the string content into a given buffer, the buffer size must be
-         *      provided by the user. The buffer size will be updated to the number of
-         *      characters copied into the buffer. If the buffer size is not enough to
-         *      store the string or has not been allocated, it will be reallocated to
-         *      the exact size of the string. The buffer will have null-terminated character.
-         *
-         * Should not use this method by the higher level of the application, it'd only be
-         *      used by platform-specific implementations to convert the string to the platform
-         *      specific string type.
-         *
-         * @note The buffer must be deleted by the user after using it.
-         *
-         * @param buffer The buffer to store the string content. This buffer must be
-         *      a char pointer. It can be not allocated or allocated with a size. This
-         *      buffer must be deleted by the user after using it.
-         * @param buffer_size The size of the buffer. This size will be updated to the
-         *      number of characters copied into the buffer.
-         */
-        void ToCharArray(char *&buffer, U32 &buffer_size) const;
-
-        // operator overloads
-        bool operator<(const String &other) const;
-        bool operator>(const String &other) const;
-        bool operator<=(const String &other) const;
-        bool operator>=(const String &other) const;
-        bool operator!=(const String &other) const;
-        String operator=(const String &other);
-        bool operator==(const String &other) const;
-        String operator+(const String &other) const;
-        inline String &operator+=(const String &other)
-        {
-            *this = *this + other;
-            return *this;
-        }
-
     private:
-        char *m_msg;
     };
 } // namespace ntt

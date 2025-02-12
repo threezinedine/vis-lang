@@ -10,14 +10,7 @@ namespace ntt
 
     Json::Json(const String &json)
     {
-        char *cstr = nullptr;
-        U32 length;
-
-        json.ToCharArray(cstr, length);
-
-        m_json = nlohmann::json::parse(cstr);
-
-        delete[] cstr;
+        m_json = nlohmann::json::parse(json.c_str());
     }
 
     Json::~Json()
@@ -27,27 +20,20 @@ namespace ntt
 #define JSON_GET_NUMBER_METHOD_IMPL(type)                            \
     type Json::Get##type(const String &key, type defaultValue) const \
     {                                                                \
-        char *cstr = nullptr;                                        \
-        U32 length;                                                  \
-                                                                     \
-        key.ToCharArray(cstr, length);                               \
-                                                                     \
+        const char *cstr = key.c_str();                              \
         if (m_json.contains(cstr))                                   \
         {                                                            \
             if (m_json[cstr].is_number())                            \
             {                                                        \
                 type value = m_json[cstr].get<type>();               \
-                delete[] cstr;                                       \
                 return value;                                        \
             }                                                        \
             else if (m_json[cstr].is_boolean())                      \
             {                                                        \
                 B8 value = m_json[cstr].get<B8>();                   \
-                delete[] cstr;                                       \
                 return value ? 1 : 0;                                \
             }                                                        \
         }                                                            \
-        delete[] cstr;                                               \
         return defaultValue;                                         \
     }
 
@@ -62,44 +48,33 @@ namespace ntt
 
     B8 Json::GetB8(const String &key, B8 defaultValue) const
     {
-        char *cstr = nullptr;
-        U32 length;
-
-        key.ToCharArray(cstr, length);
+        const char *cstr = key.c_str();
 
         if (m_json.contains(cstr))
         {
             if (m_json[cstr].is_boolean())
             {
                 B8 value = m_json[cstr].get<B8>();
-                delete[] cstr;
                 return value;
             }
             else if (m_json[cstr].is_number())
             {
                 I32 value = m_json[cstr].get<I32>();
-                delete[] cstr;
                 return value == 0 ? False : True;
             }
         }
-        delete[] cstr;
         return defaultValue;
     }
 
     String Json::GetString(const String &key, String defaultValue) const
     {
-        char *cstr = nullptr;
-        U32 length;
-
-        key.ToCharArray(cstr, length);
+        const char *cstr = key.c_str();
 
         if (m_json.contains(cstr) && m_json[cstr].is_string())
         {
             std::string value = m_json[cstr].get<std::string>();
-            delete[] cstr;
             return String(value.c_str());
         }
-        delete[] cstr;
         return defaultValue;
     }
 

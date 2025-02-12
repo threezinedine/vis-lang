@@ -11,6 +11,7 @@ int main(void)
     LogInit({
         static_cast<Ref<LogHandler>>(CreateRef<ntt::ConsoleHandler>(NTT_LOG_LEVEL_DEBUG)),
     });
+
     InitWindow("NTT Visualizer Language");
 
     while (!WindowShouldClose())

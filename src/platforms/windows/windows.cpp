@@ -61,11 +61,7 @@ namespace ntt
             break;
         }
 
-        char *msgChar = nullptr;
-        U32 msgSize = 0;
-        msg.ToCharArray(msgChar, msgSize);
-
-        std::cout << msgChar;
+        std::cout << msg;
 
         if (newLine)
         {
@@ -74,8 +70,6 @@ namespace ntt
 
         // Reset the color to white
         SetConsoleTextAttribute(hConsole, 15);
-
-        delete[] msgChar;
 
         return;
     }

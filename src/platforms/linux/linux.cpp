@@ -61,17 +61,11 @@ namespace ntt
             break;
         }
 
-        char *msgChar = nullptr;
-        U32 msgSize = 0;
-        msg.ToCharArray(msgChar, msgSize);
-
-        std::cout << "\033[" << colorCode << "m" << msgChar << "\033[0m";
+        std::cout << "\033[" << colorCode << "m" << msg << "\033[0m";
         if (newLine)
         {
             std::cout << std::endl;
         }
-
-        delete[] msgChar;
 
         return;
     }
