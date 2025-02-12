@@ -22,7 +22,8 @@ namespace ntt
          *      replaced by the actual value. The predefined keywords are:
          *      - `@level` - The level of the log message (like INFO, DEBUG, etc.)
          *      - `@message` - The actual message which is passed to the log.
-         *      - `@file` - The file name where the log is called.
+         *      - `@file` - The file name where the log is called (only the file name
+         *          without the extension and fullpath).
          *      - `@line` - The line number where the log is called.
          *      - `@time` - The time when the log is called with the format
          *          `YYYY-MM-DD HH:MM:SS` (24-hour format).

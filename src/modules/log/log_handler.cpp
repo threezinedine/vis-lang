@@ -40,7 +40,7 @@ namespace ntt
         String formatted = m_format;
         formatted = formatted.Replace("@level", LogLevelToString(message.level));
         formatted = formatted.Replace("@message", message.message);
-        formatted = formatted.Replace("@file", message.fileName);
+        formatted = formatted.Replace("@file", message.fileName.GetFileName());
         formatted = formatted.Replace("@line", ConvertToString(message.lineNumber));
         formatted = formatted.Replace("@time", message.time.WithFormat("%Y-%m-%d %H:%M:%S"));
 
