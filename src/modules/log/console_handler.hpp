@@ -10,13 +10,13 @@ namespace ntt
     class ConsoleHandler : public LogHandler
     {
     public:
-        ConsoleHandler(LogLevel level);
+        ConsoleHandler(LogLevel level, const String &format = "[@level] - @message");
         ~ConsoleHandler() override;
 
     protected:
         /**
          * Display the log message into the console/terminal/command line, etc.
          */
-        virtual void HandleImpl(const LogMessage &message) override;
+        virtual void HandleImpl(const LogMessage &message, const String &formatted) override;
     };
 } // namespace ntt

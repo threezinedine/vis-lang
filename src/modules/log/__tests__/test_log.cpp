@@ -6,6 +6,7 @@
 using namespace ntt;
 
 static Array<LogMessage> s_messages;
+static Array<String> s_formatteds;
 
 ///////////////////// TestHandler Define //////////////////////
 /**
@@ -22,12 +23,11 @@ public:
     {
     }
 
-    static Array<LogMessage> messages;
-
 protected:
-    void HandleImpl(const LogMessage &message) override
+    void HandleImpl(const LogMessage &message, const String &formatted) override
     {
         s_messages.push_back(message);
+        s_formatteds.push_back(formatted);
     }
 };
 
@@ -57,6 +57,8 @@ TEST_F(TestLogHandler, ConfigureLogHandle)
 
     ASSERT_EQ(s_messages.size(), 1);
     auto message = s_messages[0];
+    ASSERT_EQ(message.level, NTT_LOG_LEVEL_INFO);
+    EXPECT_EQ(s_formatteds[0], "[INFO] - Hello, World!");
 }
 
 TEST_F(TestLogHandler, DonotHandleMessageWithLowerLogLevel)

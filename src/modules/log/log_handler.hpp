@@ -16,8 +16,18 @@ namespace ntt
         /**
          * @param level The level of the log handler, this level will be used to
          *      filter out the log message based on the level.
+         *
+         * @param format The string which indicates how the log message should be
+         *      formed. This string have some predefined keywords which will be
+         *      replaced by the actual value. The predefined keywords are:
+         *      - `@level` - The level of the log message (like INFO, DEBUG, etc.)
+         *      - `@message` - The actual message which is passed to the log.
+         *      - `@file` - The file name where the log is called.
+         *      - `@line` - The line number where the log is called.
+         *      - `@time` - The time when the log is called with the format
+         *          `YYYY-MM-DD HH:MM:SS` (24-hour format).
          */
-        LogHandler(LogLevel level);
+        LogHandler(LogLevel level, const String &format = "[@level] - @message");
 
         virtual ~LogHandler();
 
@@ -42,10 +52,15 @@ namespace ntt
          * @param message The log message which will be passed to the handler.
          *      This message will contain all the information about the log
          *      like the message, level, etc.
+         *
+         * @param formatted The string which is convereted by the format string
+         *      which is passed to the constructor, this string will be used to
+         *      display the log message.
          */
-        virtual void HandleImpl(const LogMessage &message) = 0;
+        virtual void HandleImpl(const LogMessage &message, const String &formatted) = 0;
 
     private:
         U8 m_level;
+        String m_format;
     };
 } // namespace ntt

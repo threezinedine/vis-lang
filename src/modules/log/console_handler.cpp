@@ -3,8 +3,8 @@
 
 namespace ntt
 {
-    ConsoleHandler::ConsoleHandler(LogLevel level)
-        : LogHandler(level)
+    ConsoleHandler::ConsoleHandler(LogLevel level, const String &format)
+        : LogHandler(level, format)
     {
     }
 
@@ -12,14 +12,8 @@ namespace ntt
     {
     }
 
-    void ConsoleHandler::HandleImpl(const LogMessage &message)
+    void ConsoleHandler::HandleImpl(const LogMessage &message, const String &formatted)
     {
-        auto finalMessage = Format("{} - {}:{} - {}",
-                                   message.time.ToString(),
-                                   message.fileName,
-                                   message.lineNumber,
-                                   message.message);
-
         DefaultColor color;
         switch (message.level)
         {
@@ -46,6 +40,6 @@ namespace ntt
             break;
         }
 
-        Print(finalMessage, color);
+        Print(formatted, color);
     }
 }

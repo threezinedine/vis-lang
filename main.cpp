@@ -9,7 +9,10 @@ using namespace ntt;
 int main(void)
 {
     LogInit({
-        static_cast<Ref<LogHandler>>(CreateRef<ntt::ConsoleHandler>(NTT_LOG_LEVEL_DEBUG)),
+        static_cast<Ref<LogHandler>>(
+            CreateRef<ntt::ConsoleHandler>(
+                NTT_LOG_LEVEL_DEBUG,
+                "[@level] - @time - @file:@line - @message")),
     });
 
     InitWindow("NTT Visualizer Language");
