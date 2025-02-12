@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include <modules/log/log.hpp>
-#include <macros/macros.hpp>
+#include "../log.hpp"
 
 using namespace ntt;
 
@@ -57,4 +56,16 @@ TEST_F(TestLogHandler, ConfigureLogHandle)
     Log(NTT_LOG_LEVEL_INFO, "Testfile.cpp", 10, "Hello, World!");
 
     ASSERT_EQ(s_messages.size(), 1);
+    auto message = s_messages[0];
+}
+
+TEST_F(TestLogHandler, DonotHandleMessageWithLowerLogLevel)
+{
+    LogInit({
+        static_cast<Ref<LogHandler>>(CreateRef<TestHandler>(NTT_LOG_LEVEL_INFO)),
+    });
+
+    Log(NTT_LOG_LEVEL_DEBUG, "Testfile.cpp", 10, "Hello, World!");
+
+    ASSERT_EQ(s_messages.size(), 0);
 }

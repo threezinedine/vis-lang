@@ -55,9 +55,13 @@ namespace ntt
         String fileName; ///< The file name where the log is called.
         U32 lineNumber;  ///< The line number where the log is called.
         String message;  ///< The message which the user wants to log.
+        DateTime time;   ///< The time when the log is called.
 
-        LogMessage(LogLevel level, const String &fileName, U32 lineNumber, const String &message)
-            : level(level), fileName(fileName), lineNumber(lineNumber), message(message)
+        LogMessage(LogLevel level, const String &fileName,
+                   U32 lineNumber, const String &message, DateTime time)
+            : level(level), fileName(fileName),
+              lineNumber(lineNumber), message(message),
+              time(time)
         {
         }
 

@@ -16,7 +16,10 @@ namespace ntt
     {
         for (auto &handler : s_handlers)
         {
-            handler->Handle(LogMessage{level, fileName, line, message});
+            handler->Handle(
+                LogMessage{level, fileName,
+                           line, message,
+                           DateTime::Now()});
         }
     }
 

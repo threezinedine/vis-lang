@@ -4,18 +4,20 @@
 			"name": "Win32",
 			"includePath": [
 				"${workspaceFolder}/**",
-				"${workspaceFolder}/vendors/stb_image/*",
-				"${workspaceFolder}/vendors/glew/include/*",
-				"${workspaceFolder}/vendors/json/include/*",
-				"${workspaceFolder}/vendors/googletest/googletest/include/*",
-				"${workspaceFolder}/vendors/googletest/googlemock/include/*"
+				"${workspaceFolder}/src/datatypes/*",
+				"${workspaceFolder}/vendors/**",
+				"${workspaceFolder}/vendors/json/include",
+				"${workspaceFolder}/vendors/imgui/",
+				"${workspaceFolder}/vendors/googletest/googletest/include",
+				"${workspaceFolder}/vendors/googletest/googlemock/include",
+				"${workspaceFolder}/src"
 			],
 			"defines": ["_DEBUG", "UNICODE", "_UNICODE", "USE_OPENGL"],
 			"windowsSdkVersion": "10.0.22621.0",
 			"compilerPath": "cl.exe",
 			"cStandard": "c17",
 			"cppStandard": "c++17",
-			"intelliSenseMode": "windows-msvc-x64"
+			"intelliSenseMode": "msvc-x64"
 		}
 	],
 	"version": 4

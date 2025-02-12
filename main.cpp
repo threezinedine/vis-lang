@@ -1,5 +1,6 @@
 #include <platforms/platforms.hpp>
 #include <utilities/utilities.hpp>
+#include <modules/modules.hpp>
 #include <datatypes/datatypes.hpp>
 #include "imgui.h"
 
@@ -7,6 +8,9 @@ using namespace ntt;
 
 int main(void)
 {
+    LogInit({
+        static_cast<Ref<LogHandler>>(CreateRef<ntt::ConsoleHandler>(NTT_LOG_LEVEL_DEBUG)),
+    });
     InitWindow("NTT Visualizer Language");
 
     while (!WindowShouldClose())

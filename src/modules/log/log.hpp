@@ -1,5 +1,5 @@
 #pragma once
-#include "LogHandler.hpp"
+#include "log_handler.hpp"
 #include <datatypes/datatypes.hpp>
 
 namespace ntt
@@ -39,3 +39,5 @@ namespace ntt
      */
     void LogShutdown();
 } // namespace ntt
+
+#include "console_handler.hpp"
