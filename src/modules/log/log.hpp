@@ -1,5 +1,6 @@
 #pragma once
 #include "log_handler.hpp"
+#include "log_message.hpp"
 #include <datatypes/datatypes.hpp>
 
 namespace ntt
@@ -41,3 +42,75 @@ namespace ntt
 } // namespace ntt
 
 #include "console_handler.hpp"
+
+/**
+ * Used for logging the message at functional level. The level `NTT_LOG_LEVEL_TRACE`
+ *      will be used for the trace message.
+ *
+ * @example
+ * ```cpp
+ * NTT_LOG_TRACE("This is a trace message: {}", 10.3);
+ * ```
+ */
+#define NTT_LOG_TRACE(...) \
+    ::ntt::Log(NTT_LOG_LEVEL_TRACE, __FILE__, __LINE__, ::ntt::Format(__VA_ARGS__))
+
+/**
+ * Used for logging the message at functional level. The level `NTT_LOG_LEVEL_DEBUG`
+ *      will be used for the debug message.
+ *
+ * @example
+ * ```cpp
+ * NTT_LOG_DEBUG("This is a debug message: {}", 10.3);
+ * ```
+ */
+#define NTT_LOG_DEBUG(...) \
+    ::ntt::Log(NTT_LOG_LEVEL_DEBUG, __FILE__, __LINE__, ::ntt::Format(__VA_ARGS__))
+
+/**
+ * Used for logging the message at functional level. The level `NTT_LOG_LEVEL_INFO`
+ *      will be used for the info message.
+ *
+ * @example
+ * ```cpp
+ * NTT_LOG_INFO("This is an info message: {}", 10.3);
+ * ```
+ */
+#define NTT_LOG_INFO(...) \
+    ::ntt::Log(NTT_LOG_LEVEL_INFO, __FILE__, __LINE__, ::ntt::Format(__VA_ARGS__))
+
+/**
+ * Used for logging the message at functional level. The level `NTT_LOG_LEVEL_WARN`
+ *      will be used for the warn message.
+ *
+ * @example
+ * ```cpp
+ * NTT_LOG_WARN("This is a warn message: {}", 10.3);
+ * ```
+ */
+#define NTT_LOG_WARN(...) \
+    ::ntt::Log(NTT_LOG_LEVEL_WARN, __FILE__, __LINE__, ::ntt::Format(__VA_ARGS__))
+
+/**
+ * Used for logging the message at functional level. The level `NTT_LOG_LEVEL_ERROR`
+ *     will be used for the error message.
+ *
+ * @example
+ * ```cpp
+ * NTT_LOG_ERROR("This is an error message: {}", 10.3);
+ * ```
+ */
+#define NTT_LOG_ERROR(...) \
+    ::ntt::Log(NTT_LOG_LEVEL_ERROR, __FILE__, __LINE__, ::ntt::Format(__VA_ARGS__))
+
+/**
+ * Used for logging the message at functional level. The level `NTT_LOG_LEVEL_FATAL`
+ *     will be used for the fatal message.
+ *
+ * @example
+ * ```cpp
+ * NTT_LOG_FATAL("This is a fatal message: {}", 10.3);
+ * ```
+ */
+#define NTT_LOG_FATAL(...) \
+    ::ntt::Log(NTT_LOG_LEVEL_FATAL, __FILE__, __LINE__, ::ntt::Format(__VA_ARGS__))

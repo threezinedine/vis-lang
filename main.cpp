@@ -13,6 +13,7 @@ int main(void)
     });
 
     InitWindow("NTT Visualizer Language");
+    NTT_LOG_INFO("Window initialized");
 
     while (!WindowShouldClose())
     {
