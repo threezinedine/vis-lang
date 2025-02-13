@@ -53,7 +53,7 @@ TEST_F(TestLogHandler, ConfigureLogHandle)
         static_cast<Ref<LogHandler>>(CreateRef<TestHandler>(NTT_LOG_LEVEL_INFO)),
     });
 
-    Log(NTT_LOG_LEVEL_INFO, "Testfile.cpp", 10, "Hello, World!");
+    Log(NTT_LOG_LEVEL_INFO, __FILE__, 10, "Hello, World!");
 
     ASSERT_EQ(s_messages.size(), 1);
     auto message = s_messages[0];
@@ -67,7 +67,7 @@ TEST_F(TestLogHandler, DonotHandleMessageWithLowerLogLevel)
         static_cast<Ref<LogHandler>>(CreateRef<TestHandler>(NTT_LOG_LEVEL_INFO)),
     });
 
-    Log(NTT_LOG_LEVEL_DEBUG, "Testfile.cpp", 10, "Hello, World!");
+    Log(NTT_LOG_LEVEL_DEBUG, __FILE__, 10, "Hello, World!");
 
     ASSERT_EQ(s_messages.size(), 0);
 }
