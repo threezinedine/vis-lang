@@ -5,13 +5,6 @@ project(VizLang)
 # options definitions
 option(USE_OPENGL "Use OpenGL as the rendering API" ON) # currently only OpenGL is supported
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_compile_options(-g)
-    add_definitions(-D_DEBUG)
-else()
-    add_compile_options(-O3)
-endif()
-
 if (MSVC)
     add_definitions(-DMSVC)
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
@@ -29,6 +22,13 @@ endif()
 
 if (MINGW)
     add_definitions(-DMINGW)
+
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_compile_options(-g)
+        add_definitions(-D_DEBUG)
+    else()
+        add_compile_options(-O3)
+    endif()
 endif()
 
 file(

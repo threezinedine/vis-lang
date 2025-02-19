@@ -1,54 +1,78 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <fstream>
 
 #include "../path.hpp"
 
 using namespace ntt;
 
-TEST(TestPath, WithRelativeString)
+class TestPath : public ::testing::Test
 {
-    Path path("../main.cpp");
-    EXPECT_EQ(path.GetFileName(), "main.cpp");
+protected:
+    void SetUp() override
+    {
+        // Create a test file
+        std::ofstream file(testFile);
+        file.close();
+
+        // create test directory
+        fs::create_directory("./test_dir_only");
+    }
+
+    void TearDown() override
+    {
+        fs::remove(testFile);
+
+        fs::remove("./test_dir_only");
+    }
+
+    fs::path testFile = "./main.tst";
+};
+
+TEST_F(TestPath, WithRelativeString)
+{
+    Path path("./main.tst");
+    EXPECT_EQ(path.GetFileName(), "main.tst");
 }
 
-TEST(TestPath, WithAbsoluteString)
+TEST_F(TestPath, WithAbsoluteString)
 {
     Path path(__FILE__);
     EXPECT_EQ(path.GetFileName(), "test_path.cpp");
 }
 
-TEST(TestPath, WithRelativeStringWithoutExtension)
+TEST_F(TestPath, WithRelativeStringWithoutExtension)
 {
-    Path path("../main.cpp");
+    Path path("./main.tst");
     EXPECT_EQ(path.GetFileName(False), "main");
 }
 
-TEST(TestPath, TestExisted)
+TEST_F(TestPath, TestExisted)
 {
-    Path path("../docs");
+    Path path("./test_dir_only");
     EXPECT_TRUE(path.Exists());
 }
 
-TEST(TestPath, TestNotExisted)
+TEST_F(TestPath, TestNotExisted)
 {
-    Path path("../doc");
+    Path path("./test_dir_only_not_existed");
     EXPECT_FALSE(path.Exists());
 }
 
-TEST(TestPath, IsDirectoryTest)
+TEST_F(TestPath, IsDirectoryTest)
 {
-    Path path("../docs");
+    Path path("./test_dir_only");
     EXPECT_TRUE(path.IsDirectory());
 }
 
-TEST(TestPath, TestPath_IsNotDirectory_Test)
+TEST_F(TestPath, TestPath_IsNotDirectory_Test)
 {
-    Path path("../docs/Doxyfile");
+    Path path("./main.tst");
     EXPECT_FALSE(path.IsDirectory());
 }
 
-TEST(TestPath, CheckIsDirectoryOfNonExistedFile)
+TEST_F(TestPath, CheckIsDirectoryOfNonExistedFile)
 {
-    Path path("../doc");
+    Path path("./test_dir_only_not_existed");
     EXPECT_THROW(path.IsDirectory(), std::runtime_error);
 }
