@@ -35,12 +35,12 @@ namespace ntt
 
     typedef signed int I32;              ///< 4-byte signed data
     constexpr I32 I32_MAX = 0x7FFFFFFF;  ///< Maximum value of I32 (2147483647)
-    constexpr I32 I32_MIN = -0x80000000; ///< Minimum value of I32 (-2147483648)
+    constexpr I32 I32_MIN = 0x80000000; ///< Minimum value of I32 (-2147483648)
     static_assert(sizeof(I32) == 4, "Size of I32 is not 4 bytes");
 
     typedef signed long long I64;                ///< 8-byte signed data
     constexpr I64 I64_MAX = 0x7FFFFFFFFFFFFFFF;  ///< Maximum value of I64 (9223372036854775807)
-    constexpr I64 I64_MIN = -0x8000000000000000; ///< Minimum value of I64 (-9223372036854775808)
+    constexpr I64 I64_MIN = 0x8000000000000000; ///< Minimum value of I64 (-9223372036854775808)
     static_assert(sizeof(I64) == 8, "Size of I64 is not 8 bytes");
 
     typedef float F32;                         ///< 4-byte floating point data

@@ -76,7 +76,9 @@ namespace ntt
         glfwMakeContextCurrent(s_window);
         glfwSwapInterval(1); // Enable vsync
 
-        if (auto err = glewInit(); err != GLEW_OK)
+        auto err = glewInit();
+
+        if (err != GLEW_OK)
         {
             // TODO: Modify it when the logging system is implemented.
             Print((const char *)glewGetErrorString(err), DefaultColor::RED);

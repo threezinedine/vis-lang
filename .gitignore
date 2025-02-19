@@ -31,7 +31,8 @@
 *.out
 *.app
 
-*.bat
-build/
+# *.bat
 docs/html
 docs/latex
+
+build/

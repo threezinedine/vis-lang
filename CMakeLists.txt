@@ -12,6 +12,25 @@ else()
     add_compile_options(-O3)
 endif()
 
+if (MSVC)
+    add_definitions(-DMSVC)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} 
+                PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+    file(
+        GLOB_RECURSE 
+        VENDOR_SOURCES
+        vendors/**/*.cpp
+    )
+
+    foreach(${VENDOR_SOURCE} ${VENDOR_SOURCES})
+        set_source_files_properties(${VENDOR_SOURCE} PROPERTIES COMPILE_FLAGS /w) 
+    endforeach()
+endif()
+
+if (MINGW)
+    add_definitions(-DMINGW)
+endif()
+
 file(
     GLOB_RECURSE
     SOURCES

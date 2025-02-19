@@ -41,10 +41,12 @@ TEST(DateTimeTest, Test_Now)
     auto now = std::chrono::system_clock::now();
     auto now_time = std::chrono::system_clock::to_time_t(now);
 
-    struct tm *time_info;
-    time_info = std::localtime(&now_time);
+    struct tm time_info;
+    //time_info = std::localtime(&now_time);
+	localtime_s(&time_info, &now_time);
 
-    EXPECT_EQ(dt.GetYear(), time_info->tm_year + 1900);
-    EXPECT_EQ(dt.GetMonth(), time_info->tm_mon + 1);
-    EXPECT_EQ(dt.GetDay(), time_info->tm_mday);
+
+    EXPECT_EQ(dt.GetYear(), time_info.tm_year + 1900);
+    EXPECT_EQ(dt.GetMonth(), time_info.tm_mon + 1);
+    EXPECT_EQ(dt.GetDay(), time_info.tm_mday);
 }

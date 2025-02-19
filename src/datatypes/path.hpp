@@ -2,9 +2,16 @@
 #include "object.hpp"
 #include "string.hpp"
 #include "memory.hpp"
-#include <filesystem>
 
+#if MINGW
+#include <filesystem>
 namespace fs = std::filesystem;
+#elif MSVC
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#endif
+
 
 namespace ntt
 {

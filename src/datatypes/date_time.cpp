@@ -1,6 +1,7 @@
 #include "date_time.hpp"
 #include <utilities/format_string.hpp>
 #include <chrono>
+#include <ctime>
 
 namespace ntt
 {
@@ -69,22 +70,24 @@ namespace ntt
         auto now = std::chrono::system_clock::now();
         auto now_time = std::chrono::system_clock::to_time_t(now);
 
-        struct tm *time_info;
+        struct tm time_info;
         if (uct)
         {
-            time_info = std::gmtime(&now_time);
+            //time_info = std::gmtime(&now_time);
+            gmtime_s(&time_info, &now_time);
         }
         else
         {
-            time_info = std::localtime(&now_time);
+            //time_info = std::localtime(&now_time);
+            localtime_s(&time_info, &now_time);
         }
 
-        dt.m_year = time_info->tm_year + 1900;
-        dt.m_month = time_info->tm_mon + 1;
-        dt.m_day = time_info->tm_mday;
-        dt.m_hour = time_info->tm_hour;
-        dt.m_minute = time_info->tm_min;
-        dt.m_second = time_info->tm_sec;
+        dt.m_year = time_info.tm_year + 1900;
+        dt.m_month = time_info.tm_mon + 1;
+        dt.m_day = time_info.tm_mday;
+        dt.m_hour = time_info.tm_hour;
+        dt.m_minute = time_info.tm_min;
+        dt.m_second = time_info.tm_sec;
 
         return dt;
     }
@@ -93,22 +96,22 @@ namespace ntt
     {
         DateTime dt;
 
-        struct tm *time_info;
+        struct tm time_info;
         if (uct)
         {
-            time_info = std::gmtime(&timestamp);
+            gmtime_s(&time_info, &timestamp);
         }
         else
         {
-            time_info = std::localtime(&timestamp);
+            localtime_s(&time_info, &timestamp);
         }
 
-        dt.m_year = time_info->tm_year + 1900;
-        dt.m_month = time_info->tm_mon + 1;
-        dt.m_day = time_info->tm_mday;
-        dt.m_hour = time_info->tm_hour;
-        dt.m_minute = time_info->tm_min;
-        dt.m_second = time_info->tm_sec;
+        dt.m_year = time_info.tm_year + 1900;
+        dt.m_month = time_info.tm_mon + 1;
+        dt.m_day = time_info.tm_mday;
+        dt.m_hour = time_info.tm_hour;
+        dt.m_minute = time_info.tm_min;
+        dt.m_second = time_info.tm_sec;
 
         return dt;
     }
