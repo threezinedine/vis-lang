@@ -16,8 +16,15 @@ namespace ntt
 
         String ToString() const override
         {
-            return Format("<Scope value={} />",
-                          ConvertToString(**this));
+            if constexpr (IsAllowtypes<T>::value || std::is_base_of<Object, T>::value)
+            {
+                return Format("<Scope value={} />",
+                              ConvertToString(**this));
+            }
+            else
+            {
+                return "<Scope value=\"unknown type\" />";
+            }
         }
     };
 
@@ -37,8 +44,15 @@ namespace ntt
 
         String ToString() const override
         {
-            return Format("<Ref value={} />",
-                          ConvertToString(**this));
+            if constexpr (IsAllowtypes<T>::value || std::is_base_of<Object, T>::value)
+            {
+                return Format("<Ref value={} />",
+                              ConvertToString(**this));
+            }
+            else
+            {
+                return "<Ref value=\"unknown type\" />";
+            }
         }
     };
 

@@ -4,6 +4,10 @@
 #include <datatypes/datatypes.hpp>
 #include "imgui.h"
 
+// TODO: Just for testing, delete later
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 using namespace ntt;
 
 int main(void)
@@ -25,6 +29,20 @@ int main(void)
         // ------------- Put the logic code below -------------
 
         // ------------- Put the logic code above -------------
+
+        // ------------- Put the rendering code below ------------
+        // float vertices[] = {
+        //     -0.5f, -0.5f, 0.0f,
+        //     0.5f, -0.5f, 0.0f,
+        //     0.0f, 0.5f, 0.0f};
+
+        // unsigned int VBO;
+        // glGenBuffers(1, &VBO);
+
+        // glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        // glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+        // ------------- Put the rendering code above -------------
 
         StartFrame();
         // ------------- Put the rendering code below -------------

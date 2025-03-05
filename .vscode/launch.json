@@ -5,14 +5,14 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Test Debug",
+			"name": "Test Debug - MinGW - Debug",
 			"type": "cppdbg",
 			"request": "launch",
-			"preLaunchTask": "build",
-			"program": "${workspaceFolder}/build/VizLang_Test.exe",
+			"preLaunchTask": "build-mingw-debug",
+			"program": "${workspaceFolder}/build/Windows/MinGW/Debug/VizLang_Test.exe",
 			"args": [],
 			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/build/",
+			"cwd": "${workspaceFolder}/build/Windows/MinGW/Debug/",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb"

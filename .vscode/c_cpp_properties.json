@@ -8,6 +8,8 @@
 				"${workspaceFolder}/vendors/**",
 				"${workspaceFolder}/vendors/json/include",
 				"${workspaceFolder}/vendors/imgui/",
+				"${workspaceFolder}/vendors/glfw/include",
+				"${workspaceFolder}/vendors/glew/include",
 				"${workspaceFolder}/vendors/googletest/googletest/include",
 				"${workspaceFolder}/vendors/googletest/googlemock/include",
 				"${workspaceFolder}/src"

@@ -76,3 +76,23 @@ TEST_F(TestPath, CheckIsDirectoryOfNonExistedFile)
     Path path("./test_dir_only_not_existed");
     EXPECT_THROW(path.IsDirectory(), std::runtime_error);
 }
+
+TEST_F(TestPath, SimplePathOperations)
+{
+    Path path("./main_test.tst");
+    Path path2("main_test.tst");
+
+    path.Open(True);
+    path2.Open(True);
+
+    if (path.IsOpened())
+    {
+        path.Write("Hello, World!", False);
+    }
+
+    EXPECT_EQ(path2.IsOpened(), True);
+    EXPECT_EQ(path2.Read(), "Hello, World!");
+
+    path2.Close();
+    path.Close();
+}
