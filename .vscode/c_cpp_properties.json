@@ -14,14 +14,7 @@
 				"${workspaceFolder}/vendors/googletest/googlemock/include",
 				"${workspaceFolder}/src"
 			],
-			"defines": [
-				"_DEBUG",
-				"UNICODE",
-				"_UNICODE",
-				"MINGW",
-				"USE_OPENGL",
-				"WINDOWS"
-			],
+			"defines": ["_DEBUG", "_UNICODE", "MINGW", "USE_OPENGL", "WINDOWS"],
 			"windowsSdkVersion": "10.0.22621.0",
 			"compilerPath": "cl.exe",
 			"cStandard": "c17",
